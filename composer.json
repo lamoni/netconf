@@ -1,0 +1,25 @@
+{
+    "name": "lamoni/netconf",
+    "description": "A vendor-agnostic PHP NETCONF implementation",
+    "license": "MIT",
+    "require": {
+        "php": ">= 5.4.16",
+        "phpseclib/phpseclib": "~0.3"
+    },
+    "authors": [
+        { 
+            "name": "Lamoni Finlayson",
+            "email": "lamonif@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/lamoni/netconf",
+    "keywords": [
+        "php",
+        "netconf"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lamoni\\NetConf\\": "Lamoni/NetConf/"
+        }
+    }
+}
