@@ -79,9 +79,9 @@ class NetConf
         $port = 830;
 
         /**
-         * Default: 30 seconds
+         * Default: 120 seconds
          */
-        $timeout = 30;
+        $timeout = 120;
 
 
         /**
