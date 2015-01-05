@@ -104,17 +104,14 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
          * Added this because some server implementations of NETCONF are returning an empty array
          * for rpc-error despite there being no error...
          */
-        if ($this->doesRPCReplyHaveError()) {
+        if ($this->doesRPCReplyHaveError() && $this->getNumberOfRPCErrors() > 0) {
 
-            if (count($this->rpcError) === 0) {
-
-                return true;
-
-            }
+            return false;
 
         }
 
-        return false;
+        return true;
+
     }
 
     /**
@@ -124,7 +121,7 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
      */
     public function doesRPCReplyHaveError()
     {
-        if (count($this->rpcError) === 0) {
+        if ($this->getNumberOfRPCErrors() !== []) {
 
             return false;
 
@@ -132,6 +129,15 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
 
         return true;
 
+    }
+
+    /**
+     * Returns the number of RPC errors.
+     */
+
+    public function getNumberOfRPCErrors()
+    {
+        return count($this->rpcError);
     }
 
     /**
@@ -155,7 +161,7 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
     public function getRPCError()
     {
 
-        if (count($this->rpcError) === 0) {
+        if ($this->getNumberOfRPCErrors() === 0) {
 
             return false;
 
