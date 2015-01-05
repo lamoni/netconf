@@ -84,7 +84,7 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
     }
 
     /**
-     * If response contains either an <ok/> or doesn't havea ny errors, consider it "OK"
+     * If response contains either an <ok/> or doesn't have any errors, consider it "OK"
      *
      * @return bool
      */
@@ -94,8 +94,24 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
          * This || needs to stay due to the fact an <ok> and a <rpc-error> can actually co-exist, but
          * only if the rpc-error's error-severity is a "warning" level.
          */
-        if (isset($this->getResponse()->{'ok'}) || $this->doesRPCReplyHaveError() === false) {
+        if (isset($this->getResponse()->{'ok'})) {
+
             return true;
+
+        }
+
+        /*
+         * Added this because some server implementations of NETCONF are returning an empty array
+         * for rpc-error despite there being no error...
+         */
+        if ($this->doesRPCReplyHaveError()) {
+
+            if (count($this->rpcError) === 0) {
+
+                return true;
+
+            }
+
         }
 
         return false;
