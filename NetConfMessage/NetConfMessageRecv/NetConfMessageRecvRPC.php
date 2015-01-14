@@ -121,13 +121,13 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
      */
     public function doesRPCReplyHaveError()
     {
-        if ($this->getNumberOfRPCErrors() === []) {
+        if ($this->getNumberOfRPCErrors() !== 0) {
 
-            return false;
+            return true;
 
         }
 
-        return true;
+        return false;
 
     }
 
