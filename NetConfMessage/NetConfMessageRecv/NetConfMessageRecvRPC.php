@@ -91,7 +91,7 @@ class NetConfMessageRecvRPC extends NetConfMessageRecvAbstract
     public function isRPCReplyOK()
     {
         /*
-         * This || needs to stay due to the fact an <ok> and a <rpc-error> can actually co-exist, but
+         * This needs to stay due to the fact an <ok> and a <rpc-error> can actually co-exist, but
          * only if the rpc-error's error-severity is a "warning" level.
          */
         if (isset($this->getResponse()->{'ok'})) {
