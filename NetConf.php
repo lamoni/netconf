@@ -139,14 +139,6 @@ class NetConf
     }
 
     /**
-     * Close the session on instance death
-     */
-    public function __destruct()
-    {
-        $this->closeSession();
-    }
-
-    /**
      * Hello Exchange
      */
     public function exchangeHellos()
