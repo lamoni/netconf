@@ -2,6 +2,7 @@
     "name": "lamoni/netconf",
     "description": "A vendor-agnostic PHP NETCONF implementation",
     "license": "MIT",
+    "version": "1.0.1",
     "require": {
         "php": ">= 5.4.16",
         "phpseclib/phpseclib": "1.0.*"
@@ -19,7 +20,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Lamoni\\NetConf\\": "Lamoni/NetConf/"
+            "Lamoni\\NetConf\\": "src"
         }
     }
 }
